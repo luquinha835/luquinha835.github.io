@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LuqueteDev</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Orbitron',sans-serif;
+background:#020202;
+color:#00ff88;
+overflow-x:hidden;
+}
+
+/* MATRIX */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+}
+
+/* FUNDO */
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center,#001a0f 0%,#000 70%);
+z-index:-1;
+}
+
+/* HEADER */
+
+header{
+padding:100px 20px 60px;
+text-align:center;
+}
+
+header h1{
+font-size:85px;
+font-weight:900;
+text-shadow:
+0 0 10px #00ff88,
+0 0 25px #00ff88,
+0 0 50px #00ff88;
+animation:glow 2s infinite alternate;
+}
+
+header p{
+margin-top:20px;
+font-size:22px;
+color:#c4ffe6;
+max-width:900px;
+margin-left:auto;
+margin-right:auto;
+line-height:1.7;
+}
+
+@keyframes glow{
+from{
+text-shadow:
+0 0 10px #00ff88,
+0 0 20px #00ff88;
+}
+to{
+text-shadow:
+0 0 20px #00ff88,
+0 0 40px #00ff88,
+0 0 80px #00ff88;
+}
+}
+
+.line{
+width:250px;
+height:4px;
+background:#00ff88;
+margin:35px auto;
+box-shadow:0 0 15px #00ff88;
+}
+
+/* GRID */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px 25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(0,0,0,0.7);
+border:2px solid #00ff88;
+border-radius:20px;
+padding:35px;
+backdrop-filter:blur(8px);
+box-shadow:
+0 0 15px #00ff8840,
+inset 0 0 20px #00ff8815;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(
+45deg,
+transparent,
+rgba(0,255,136,0.1),
+transparent
+);
+transform:rotate(25deg);
+animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+0%{
+transform:translateX(-100%) rotate(25deg);
+}
+100%{
+transform:translateX(100%) rotate(25deg);
+}
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:
+0 0 25px #00ff88,
+0 0 50px #00ff8850;
+}
+
+.card h2{
+font-size:34px;
+margin-bottom:20px;
+text-shadow:0 0 10px #00ff88;
+}
+
+.card p{
+font-size:16px;
+line-height:1.9;
+color:#d8fff0;
+margin-bottom:25px;
+}
+
+.card ul{
+margin-bottom:25px;
+padding-left:18px;
+}
+
+.card li{
+margin-bottom:12px;
+color:#aaffd6;
+}
+
+/* BOTÃO */
+
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#00ff88;
+color:#000;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+font-family:'Orbitron',sans-serif;
+transition:0.3s;
+box-shadow:0 0 15px #00ff88;
+}
+
+button:hover{
+background:#00cc6a;
+transform:scale(1.05);
+box-shadow:
+0 0 20px #00ff88,
+0 0 40px #00ff88;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:70px;
+padding:40px 20px;
+text-align:center;
+border-top:2px solid #00ff88;
+background:#000;
+color:#8cffc7;
+font-size:15px;
+}
+
+footer span{
+color:#00ff88;
+font-weight:bold;
+}
+
+/* DIGITANDO */
+
+.typing{
+overflow:hidden;
+white-space:nowrap;
+border-right:4px solid #00ff88;
+width:0;
+margin:auto;
+animation:
+typing 5s steps(45,end) forwards,
+blink .8s infinite;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+@keyframes blink{
+50%{border-color:transparent}
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+<div class="overlay"></div>
+
+<header>
+
+<h1>LUQUETEDEV</h1>
+
+<div class="line"></div>
+
+<p class="typing">
+Programador • Criador de Jogos • Desenvolvedor Web • Hacker Style
+</p>
+
+<p>
+Bem-vindo ao universo da <strong>LuqueteDev</strong>.
+Aqui você encontra projetos insanos em HTML,
+jogos de terror, experiências hacker, sistemas web,
+interfaces futuristas e muito mais.
+</p>
+
+</header>
+
+<div class="container">
+
+<!-- PROJETOS -->
+
+<div class="card">
+
+<h2>🚀 Projetos</h2>
+
+<p>
+Explore os principais projetos desenvolvidos pela LuqueteDev.
+Jogos em HTML, sistemas futuristas, interfaces modernas,
+experiências hacker e aplicações criativas publicadas no GitHub.
+</p>
+
+<ul>
+<li>🎮 Jogos de Terror</li>
+<li>💻 Sites Modernos</li>
+<li>🌌 Interfaces Futuristas</li>
+<li>⚡ Experiências Hacker</li>
+<li>🧠 Projetos Criativos</li>
+</ul>
+
+<button onclick="window.open('https://github.com/luquinha835?tab=repositories','_blank')">
+VER PROJETOS
+</button>
+
+</div>
+
+<!-- EMPRESA -->
+
+<div class="card">
+
+<h2>🏢 Luquinha Games</h2>
+
+<p>
+A <strong>Luquinha Games</strong> é uma empresa focada
+na criação de jogos, experiências digitais e projetos web.
+Nosso objetivo é desenvolver conteúdos únicos,
+imersivos e criativos para a internet.
+</p>
+
+<ul>
+<li>🎮 Desenvolvimento de Jogos</li>
+<li>🌐 Criação de Sites</li>
+<li>💡 Projetos Criativos</li>
+<li>⚔️ Jogos de Terror</li>
+<li>🚀 Tecnologia e Inovação</li>
+</ul>
+
+<button onclick="window.open('https://luquinhagamesoficial-cyber.github.io','_blank')">
+ACESSAR LUQUINHA GAMES
+</button>
+
+</div>
+
+<!-- SOBRE MIM -->
+
+<div class="card">
+
+<h2>👨‍💻 Sobre Mim</h2>
+
+<p>
+Sou <strong>LuqueteDev</strong>,
+um desenvolvedor apaixonado por tecnologia,
+programação e criação de experiências digitais.
+Crio jogos, sites e projetos modernos utilizando HTML,
+CSS e JavaScript.
+</p>
+
+<ul>
+<li>💻 Desenvolvedor Web</li>
+<li>🎮 Criador de Jogos</li>
+<li>⚡ Estilo Hacker</li>
+<li>🌌 Design Futurista</li>
+<li>🔥 Projetos Criativos</li>
+</ul>
+
+<button onclick="alert('LuqueteDev - Criando o futuro da web.')">
+MAIS SOBRE MIM
+</button>
+
+</div>
+
+<!-- PARCERIA -->
+
+<div class="card">
+
+<h2>🤝 Luquinha Chat</h2>
+
+<p>
+Quer desenvolver algo comigo?
+Vamos criar projetos, jogos,
+sites ou formar uma parceria incrível.
+Entre no servidor da comunidade
+e converse diretamente comigo.
+</p>
+
+<ul>
+<li>🤝 Parcerias</li>
+<li>🧠 Desenvolvimento Conjunto</li>
+<li>🎮 Criação de Jogos</li>
+<li>💻 Projetos Web</li>
+<li>🚀 Comunidade Hacker</li>
+</ul>
+
+<button onclick="window.open('https://discord.com/channels/1506018847013208074/1506018847730438258','_blank')">
+ENTRAR NO DISCORD
+</button>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 <span>LuqueteDev</span> • Hacker Style Website
+
+</footer>
+
+<script>
+
+/* MATRIX EFFECT */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let i = 0; i < columns; i++){
+drops[i] = 1;
+}
+
+function draw(){
+
+ctx.fillStyle = "rgba(0,0,0,0.06)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff88";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text = letters[Math.floor(Math.random() * letters.length)];
+
+ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+drops[i] = 0;
+}
+
+drops[i]++;
+}
+}
+
+setInterval(draw,35);
+
+window.addEventListener("resize",()=>{
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>
